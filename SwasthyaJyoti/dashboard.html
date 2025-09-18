@@ -1,74 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SwasthyaJyoti — Dashboard</title>
-  <link rel="icon" href="images/logo.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="sub-style.css" />
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="sub-style.css">
   <style>
-    .form-card {
-      background: #fff;
-      padding: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.12);
-      max-width: 500px;
-      width: 100%;
-      text-align: center;
-    }
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 0.9rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    .btn-primary {
-      display: inline-block;
-      width: 100%;
-      padding: 0.9rem;
-      border-radius: 8px;
-      border: none;
-      background: #0a9396;
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      text-align: center;
-    }
-    .btn-primary:hover {
-      background: #007f83;
-    }
-
-    /* Dashboard Layout */
-    .dashboard {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .dash-card {
-      background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .dash-card h3 {
-      margin-bottom: 1rem;
-      color: #023047;
-    }
-    canvas {
-      max-width: 100%;
-    }
+    .site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 280px; 
+  width: calc(100% - 280px);
+  background: #023047;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
   </style>
 </head>
 <body>
   <div class="page-layout">
+
     <!-- Sidebar -->
     <aside class="sidebar">
       <div>
@@ -78,110 +35,296 @@
           <div class="sub">Your Health, Our Mission</div>
         </div>
         <nav>
-          <a href="index.html"><i class="fa fa-home"></i> Home</a>
-          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
-          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
-          <a href="dashboard.html" class="active"><i class="fa fa-chart-line"></i> Dashboard</a>
+          <a href="#" onclick="showSection('dashboard')" class="active">
+            <i class="fa fa-chart-pie"></i> Dashboard
+          </a>
+          <a href="#" onclick="showSection('states')">
+            <i class="fa fa-map"></i> States Data
+          </a>
+          <a href="#" onclick="showSection('trends')">
+            <i class="fa fa-line-chart"></i> Disease Trends
+          </a>
+          <a href="#" onclick="showSection('reports')">
+            <i class="fa fa-file-alt"></i> Reports
+          </a>
+          <a href="#" onclick="showSection('settings')">
+            <i class="fa fa-cog"></i> Settings
+          </a>
+          <a href="#" onclick="showSection('help')">
+            <i class="fa fa-circle-question"></i> Help Centre
+          </a>
+          <a href="#" onclick="showSection('contact')">
+            <i class="fa fa-envelope"></i> Contact Us
+          </a>
         </nav>
       </div>
       <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
     </aside>
 
-    <!-- Page Content -->
+    <!-- Main Content -->
     <div class="page-content">
-      <!-- Banner -->
-      <section class="page-banner">
-        <h2><i class="fa-solid fa-chart-pie"></i> Analytics Dashboard</h2>
-      </section>
 
-      <!-- Password Form -->
-      <div class="center-container" id="authSection">
-        <div class="form-card">
-          <h1><i class="fa-solid fa-key"></i> Enter Officer Password</h1>
-          <p class="form-sub">Only authorized officers can access this dashboard.</p>
+      <!-- Password Protection -->
+      <div id="authCard" class="center-container">
+        <div class="form-card wide-card">
+          <h2><i class="fa fa-lock"></i> Officer Access</h2>
+          <p class="form-sub">Enter the password to unlock the dashboard</p>
           <div class="form-group">
-            <input type="password" id="dashboardPass" placeholder="Enter Password" required />
+            <label for="dashboardPass"><i class="fa fa-key"></i> Password</label>
+            <input type="password" id="dashboardPass" placeholder="Enter Password" required>
           </div>
-          <button class="btn-primary" onclick="checkDashboardPassword()">Unlock</button>
+          <button class="btn-primary full-btn" onclick="checkDashboardAccess()">Unlock</button>
         </div>
       </div>
 
-      <!-- Dashboard (Hidden Initially) -->
-      <div class="dashboard" id="dashboardSection" style="display: none;">
-        <div class="dash-card">
-          <h3>Disease Spread (Sample)</h3>
+      <div id="dashboardContent" style="display:none;">
+        <header>
+          <h1 id="page-title">Dashboard</h1>
+          <button onclick="alert('Logging Out...')" title="Logout">
+            <i class="fa fa-power-off"></i> Logout
+          </button>
+        </header>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section">
+          <div class="cards">
+            <div class="card"><h3>Total Residents</h3><p id="totalResidents">0</p></div>
+            <div class="card"><h3>Total Registered</h3><p id="totalRegistered">0</p></div>
+            <div class="card"><h3>Avg Disease Prediction %</h3><p id="avgPrediction">0%</p></div>
+          </div>
+          <canvas id="overviewChart"></canvas>
+        </div>
+
+        <!-- States Data -->
+        <div id="states" class="section" style="display:none;">
+          <h2>State-wise Data</h2>
+          <table id="statesTable">
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Residents Before</th>
+                <th>New Arrivals</th>
+                <th>Residents After</th>
+                <th>Registered</th>
+                <th>Disease Prediction %</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Trends Section -->
+        <div id="trends" class="section" style="display:none;">
+          <h2>Disease Trends</h2>
           <canvas id="diseaseChart"></canvas>
         </div>
-        <div class="dash-card">
-          <h3>Vaccination Coverage</h3>
-          <canvas id="vaccineChart"></canvas>
-        </div>
-        <div class="dash-card">
-          <h3>Monthly Checkups</h3>
-          <canvas id="checkupChart"></canvas>
-        </div>
-      </div>
 
-      <!-- Footer -->
-      <footer class="site-footer">
-        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
-      </footer>
+        <!-- Reports Section -->
+<div id="reports" class="section" style="display:none;">
+  <h2><i class="fa fa-file-alt"></i> Reports</h2>
+  <p>Download official health reports and analytics.</p>
+  <div class="cards">
+    <div class="card">
+      <i class="fa fa-file-pdf"></i>
+      <h3>Monthly Report</h3>
+      <p>Download detailed health data and analytics for this month.</p>
+      <button class="btn-primary">Download PDF</button>
+    </div>
+    <div class="card">
+      <i class="fa fa-file-excel"></i>
+      <h3>State-wise Data</h3>
+      <p>Get all registered data and trends in spreadsheet format.</p>
+      <button class="btn-primary">Download Excel</button>
+    </div>
+    <div class="card">
+      <i class="fa fa-chart-bar"></i>
+      <h3>Analytics Report</h3>
+      <p>Graphical representation of disease trends and predictions.</p>
+      <button class="btn-primary">Download Charts</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Section -->
+<div id="settings" class="section" style="display:none;">
+  <h2><i class="fa fa-cog"></i> Settings</h2>
+  <p>Customize your dashboard preferences.</p>
+  <div class="form-card">
+    <h3>Notification Preferences</h3>
+    <form>
+      <div class="form-group">
+        <label><input type="checkbox" checked> Email Alerts</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox"> SMS Alerts</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" checked> Vaccination Reminders</label>
+      </div>
+      <button type="submit" class="btn-primary">Save Settings</button>
+    </form>
+  </div>
+  
+</div>
+
+<!-- Help Section -->
+<div id="help" class="section" style="display:none;">
+  <h2><i class="fa fa-circle-question"></i> Help Centre</h2>
+  <p>Find quick answers to common questions below.</p>
+  <div class="faq-item">
+    <h4><i class="fa fa-user"></i> How do I register a new person?</h4>
+    <p>Go to the <strong>Register</strong> page, verify OTP, and fill in personal details to create a profile.</p>
+  </div>
+  <div class="faq-item">
+    <h4><i class="fa fa-qrcode"></i> How do I generate a QR code?</h4>
+    <p>Navigate to the <strong>Generate QR</strong> section under Profile and click on "Download QR".</p>
+  </div>
+  <div class="faq-item">
+    <h4><i class="fa fa-chart-line"></i> What is disease prediction %?</h4>
+    <p>This indicates the predicted spread of communicable diseases among registered arrivals in each state.</p>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<div id="contact" class="section" style="display:none;">
+  <h2><i class="fa fa-envelope"></i> Contact Us</h2>
+  <p>If you have queries or need support, reach out to us:</p>
+  <div class="cards">
+    <div class="card">
+      <i class="fa fa-envelope"></i>
+      <h3>Email</h3>
+      <p>healthsupport@kerala.gov.in</p>
+    </div>
+    <div class="card">
+      <i class="fa fa-phone"></i>
+      <h3>Phone</h3>
+      <p>+91-471-1234567</p>
+    </div>
+    <div class="card">
+      <i class="fa fa-map-marker-alt"></i>
+      <h3>Address</h3>
+      <p>Department of Health, Govt. of Kerala, Thiruvananthapuram</p>
+    </div>
+  </div>
+</div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+          <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+        </footer>
+      </div>
     </div>
   </div>
 
   <!-- JS -->
   <script>
-    function checkDashboardPassword() {
-      const enteredPass = document.getElementById("dashboardPass").value;
-      if (enteredPass === "ditsa1234") {
-        document.getElementById("authSection").style.display = "none";
-        document.getElementById("dashboardSection").style.display = "grid";
-        loadCharts();
-      } else {
-        alert("❌ Incorrect password. Try again.");
-      }
+    // ===== Navigation =====
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+      document.getElementById('page-title').innerText =
+        sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
     }
 
-    function loadCharts() {
-      // Disease Spread Chart
+    // ===== Sample Data for 28 States =====
+    const statesData = [
+  { state: "Andhra Pradesh", residents: 500000, arrivals: 20000, regArrivals: 12000, disease: 12 },
+  { state: "Arunachal Pradesh", residents: 150000, arrivals: 5000, regArrivals: 2500, disease: 9 },
+  { state: "Assam", residents: 600000, arrivals: 30000, regArrivals: 18000, disease: 15 },
+  { state: "Bihar", residents: 1200000, arrivals: 50000, regArrivals: 30000, disease: 18 },
+  { state: "Chhattisgarh", residents: 450000, arrivals: 15000, regArrivals: 9000, disease: 11 },
+  { state: "Delhi", residents: 1000000, arrivals: 60000, regArrivals: 40000, disease: 7 },
+  { state: "Goa", residents: 120000, arrivals: 4000, regArrivals: 2500, disease: 5 },
+  { state: "Gujarat", residents: 950000, arrivals: 35000, regArrivals: 20000, disease: 13 },
+  { state: "Haryana", residents: 480000, arrivals: 18000, regArrivals: 10000, disease: 14 },
+  { state: "Himachal Pradesh", residents: 180000, arrivals: 7000, regArrivals: 4000, disease: 10 },
+  { state: "Jharkhand", residents: 500000, arrivals: 20000, regArrivals: 12000, disease: 12 },
+  { state: "Karnataka", residents: 950000, arrivals: 40000, regArrivals: 25000, disease: 16 },
+  { state: "Kerala", residents: 850000, arrivals: 10000, regArrivals: 7000, disease: 8 },
+  { state: "Madhya Pradesh", residents: 1100000, arrivals: 45000, regArrivals: 30000, disease: 19 },
+  { state: "Maharashtra", residents: 1500000, arrivals: 60000, regArrivals: 40000, disease: 20 },
+  { state: "Manipur", residents: 130000, arrivals: 5000, regArrivals: 3000, disease: 6 },
+  { state: "Meghalaya", residents: 140000, arrivals: 6000, regArrivals: 3500, disease: 9 },
+  { state: "Mizoram", residents: 120000, arrivals: 4000, regArrivals: 2500, disease: 7 },
+  { state: "Nagaland", residents: 110000, arrivals: 3500, regArrivals: 2000, disease: 8 },
+  { state: "Odisha", residents: 700000, arrivals: 25000, regArrivals: 15000, disease: 15 },
+  { state: "Punjab", residents: 600000, arrivals: 20000, regArrivals: 12000, disease: 12 },
+  { state: "Rajasthan", residents: 950000, arrivals: 35000, regArrivals: 20000, disease: 16 },
+  { state: "Sikkim", residents: 80000, arrivals: 3000, regArrivals: 2000, disease: 5 },
+  { state: "Tamil Nadu", residents: 1200000, arrivals: 40000, regArrivals: 25000, disease: 14 },
+  { state: "Telangana", residents: 800000, arrivals: 28000, regArrivals: 18000, disease: 12 },
+  { state: "Tripura", residents: 160000, arrivals: 6000, regArrivals: 3500, disease: 10 },
+  { state: "Uttar Pradesh", residents: 2000000, arrivals: 75000, regArrivals: 50000, disease: 22 },
+  { state: "Uttarakhand", residents: 300000, arrivals: 12000, regArrivals: 8000, disease: 9 },
+  { state: "West Bengal", residents: 1400000, arrivals: 70000, regArrivals: 45000, disease: 17 }
+];
+
+    // ===== Load Dashboard Data =====
+    function loadDashboardData() {
+      // Table
+      const tableBody = document.querySelector("#statesTable tbody");
+      tableBody.innerHTML = "";
+      statesData.forEach(s => {
+        const before = s.residents;
+        const after = s.residents + s.arrivals;
+        const row = `
+          <tr>
+            <td>${s.state}</td>
+            <td>${before.toLocaleString()}</td>
+            <td>${s.arrivals.toLocaleString()}</td>
+            <td>${after.toLocaleString()}</td>
+            <td>${s.regArrivals.toLocaleString()}</td>
+            <td>${s.disease}%</td>
+          </tr>`;
+        tableBody.innerHTML += row;
+      });
+
+      // Totals
+      const totalResidents = statesData.reduce((sum, s) => sum + s.residents + s.arrivals, 0);
+      const totalRegisteredArrivals = statesData.reduce((sum, s) => sum + s.regArrivals, 0);
+      const avgPrediction = (statesData.reduce((sum, s) => sum + s.disease, 0) / statesData.length).toFixed(1);
+
+      document.getElementById("totalResidents").innerText = totalResidents.toLocaleString();
+      document.getElementById("totalRegistered").innerText = totalRegisteredArrivals.toLocaleString();
+      document.getElementById("avgPrediction").innerText = avgPrediction + "%";
+
+      // Charts
+      new Chart(document.getElementById("overviewChart"), {
+        type: "bar",
+        data: {
+          labels: statesData.map(s => s.state),
+          datasets: [
+            { label: "New Arrivals", data: statesData.map(s => s.arrivals), backgroundColor: "#0a74da" },
+            { label: "Registered Among Arrivals", data: statesData.map(s => s.regArrivals), backgroundColor: "#3bc9db" }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: { x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 } } }
+        }
+      });
+
       new Chart(document.getElementById("diseaseChart"), {
         type: "line",
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-          datasets: [{
-            label: "Cases",
-            data: [12, 19, 7, 14, 20, 25],
-            borderColor: "#0a9396",
-            fill: false,
-            tension: 0.3
-          }]
+          labels: statesData.map(s => s.state),
+          datasets: [
+            { label: "Disease Prediction %", data: statesData.map(s => s.disease), borderColor: "#ff6b6b", fill: false }
+          ]
         }
       });
+    }
 
-      // Vaccination Coverage Chart
-      new Chart(document.getElementById("vaccineChart"), {
-        type: "doughnut",
-        data: {
-          labels: ["Vaccinated", "Not Vaccinated"],
-          datasets: [{
-            data: [75, 25],
-            backgroundColor: ["#0a9396", "#ffd166"]
-          }]
-        }
-      });
-
-      // Monthly Checkups Chart
-      new Chart(document.getElementById("checkupChart"), {
-        type: "bar",
-        data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-          datasets: [{
-            label: "Checkups",
-            data: [30, 45, 40, 60, 55, 70],
-            backgroundColor: "#0a9396"
-          }]
-        }
-      });
+    // ===== Password Check =====
+    function checkDashboardAccess() {
+      const password = document.getElementById("dashboardPass").value;
+      if (password === "ditsa1234") {
+        document.getElementById("authCard").style.display = "none";
+        document.getElementById("dashboardContent").style.display = "block";
+        loadDashboardData();
+      } else {
+        alert("❌ Incorrect password!");
+      }
     }
   </script>
 </body>
