@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwasthyaJyoti — Past Medical Records</title>
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="sub-style.css"/>
+  <style>
+    /* Records Table */
+    .records-card {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .records-card h1 {
+      margin-bottom: 1rem;
+      color: #023047;
+      font-size: 1.6rem;
+    }
+
+    .records-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .records-table th, 
+    .records-table td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: left;
+    }
+
+    .records-table th {
+      background: #0a9396;
+      color: white;
+      font-weight: 600;
+    }
+
+    .records-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    .records-table tr:hover {
+      background: #f1fdfc;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo"/>
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="profile.html" class="active"><i class="fa fa-user"></i> Profile</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-file-medical"></i> Past Medical Records</h2>
+      </section>
+
+      <!-- Records -->
+      <div class="center-container">
+        <div class="records-card">
+          <h1><i class="fa fa-notes-medical"></i> Rahul Sharma</h1>
+          <p class="form-sub">Showing dummy past medical records.</p>
+
+          <table class="records-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Hospital / Clinic</th>
+                <th>Diagnosis</th>
+                <th>Treatment / Prescription</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2024-02-15</td>
+                <td>AIIMS Delhi</td>
+                <td>Typhoid</td>
+                <td>Antibiotics (Cefixime), 7 days</td>
+              </tr>
+              <tr>
+                <td>2023-11-03</td>
+                <td>Safdarjung Hospital</td>
+                <td>Seasonal Flu</td>
+                <td>Paracetamol, Rest, ORS</td>
+              </tr>
+              <tr>
+                <td>2023-07-20</td>
+                <td>ESI Clinic</td>
+                <td>Minor Injury</td>
+                <td>Dressing, Tetanus Shot</td>
+              </tr>
+              <tr>
+                <td>2022-12-01</td>
+                <td>Lok Nayak Hospital</td>
+                <td>Hypertension (Follow-up)</td>
+                <td>Continue Amlodipine 5mg daily</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+/* Sticky footer */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.content {
+  flex: 1;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+
+/* ---------- Base Styles ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ---------- Navbar ---------- */
+.site-header {
+  background: #0a9396;
+  padding: 1rem 2rem;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  max-width: 100%;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.brand-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: white;
+  padding: 5px;
+  margin-right: 12px;   
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.brand-text .brand-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.brand-text .brand-sub {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #d9f8f9;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffd166;
+}
+
+/* ---------- Hero Section (Homepage) ---------- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #90e0ef, #caf0f8);
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #023047;
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;       
+  border-radius: 10px;
+  font-size: 1.1rem;        
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background: #0a9396;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #007f83;
+}
+
+.btn-outline {
+  border: 2px solid #0a9396;
+  color: #0a9396;
+}
+
+.btn-outline:hover {
+  background: #0a9396;
+  color: white;
+}
+
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+/* ---------- Features Section ---------- */
+.features {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  text-align: center;
+}
+
+.features h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #023047;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: #f6fefc;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card i {
+  font-size: 2rem;
+  color: #0a9396;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* ---------- Stats Section ---------- */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  background: #0a9396;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: auto;   
+  text-align: center;
+  padding: 1.5rem;
+  background: #023047;
+  color: white;
+  font-size: 0.9rem;
+  max-width: 100%;
+}
+
+/* ---------- Login / Register / Forms (Split Layout) ---------- */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  gap: 2rem;
+  flex: 1;
+}
+
+.login-left {
+  flex: 1;
+  max-width: 50%;
+}
+
+.login-left h1 {
+  font-size: 2rem;
+  color: #023047;
+  margin-bottom: 0.5rem;
+}
+
+.login-left .tagline {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.login-illustration {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+  width: 100%;
+  max-width: 600px;   
+  text-align: left;   
+  max-width: 100%;
+}
+
+.form-card h2 {
+  color: #023047;
+  margin-bottom: 0.5rem;
+}
+
+.form-sub {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0a9396;
+  box-shadow: 0 0 5px rgba(10,147,150,0.3);
+}
+

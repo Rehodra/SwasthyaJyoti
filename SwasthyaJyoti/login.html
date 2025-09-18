@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SwasthyaJyoti — Login</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="sub-style.css" />
+  <style>
+    .form-card { max-width: 500px; width: 100%; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { font-weight: 600; display: block; margin-bottom: 0.4rem; }
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      background: #0a9396;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #007f83; }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo" />
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html" class="active"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-user-shield"></i> Login to SwasthyaJyoti</h2>
+      </section>
+
+      <!-- Login Form -->
+      <div class="center-container">
+        <div class="form-card">
+          <h1><i class="fa fa-right-to-bracket"></i> Login</h1>
+          <p class="form-sub">Enter Aadhaar & Phone → Generate OTP → Verify to continue.</p>
+
+          <!-- Aadhaar + Phone -->
+          <form id="loginForm" onsubmit="return false;">
+            <div class="form-group">
+              <label for="aadhaar"><i class="fa fa-id-card"></i> Aadhaar Number</label>
+              <input type="text" id="aadhaar" placeholder="Enter Aadhaar Number" required />
+            </div>
+            <div class="form-group">
+              <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
+              <input type="tel" id="phone" placeholder="Enter Phone Number" required />
+            </div>
+            <button type="button" class="btn-primary" onclick="generateOTP()">Send OTP</button>
+          </form>
+
+          <!-- OTP Section  -->
+          <div id="otpSection" style="display:none; margin-top:1.5rem;">
+            <div class="form-group">
+              <label for="otp"><i class="fa fa-key"></i> Enter OTP</label>
+              <input type="text" id="otp" placeholder="Enter OTP" />
+            </div>
+            <button class="btn-primary" onclick="verifyOTP()">Verify & Login</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Login -->
+      <section class="why-section">
+        <h3>Why Login?</h3>
+        <div class="why-grid">
+          <div class="why-card">
+            <i class="fa fa-file-medical"></i>
+            <p>Securely access your digital health records anytime.</p>
+          </div>
+          <div class="why-card">
+            <i class="fa fa-shield-halved"></i>
+            <p>Protect your health data with verified login.</p>
+          </div>
+          <div class="why-card">
+            <i class="fa fa-bell"></i>
+            <p>Enable reminders for checkups & vaccinations.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    let generatedOTP = null;
+
+    function generateOTP() {
+      generatedOTP = Math.floor(100000 + Math.random() * 900000); 
+      alert("📲 OTP sent to your phone: " + generatedOTP);
+      document.getElementById("otpSection").style.display = "block";
+    }
+
+    function verifyOTP() {
+      const entered = document.getElementById("otp").value;
+      if (entered == generatedOTP) {
+        alert("✅ OTP Verified! Redirecting to Profile...");
+        window.location.href = "profile.html";
+      } else {
+        alert("❌ Incorrect OTP, try again.");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwasthyaJyoti — Dashboard</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="sub-style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .form-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .btn-primary {
+      display: inline-block;
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 8px;
+      border: none;
+      background: #0a9396;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      background: #007f83;
+    }
+
+    /* Dashboard Layout */
+    .dashboard {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .dash-card {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .dash-card h3 {
+      margin-bottom: 1rem;
+      color: #023047;
+    }
+    canvas {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo" />
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="dashboard.html" class="active"><i class="fa fa-chart-line"></i> Dashboard</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-chart-pie"></i> Analytics Dashboard</h2>
+      </section>
+
+      <!-- Password Form -->
+      <div class="center-container" id="authSection">
+        <div class="form-card">
+          <h1><i class="fa-solid fa-key"></i> Enter Officer Password</h1>
+          <p class="form-sub">Only authorized officers can access this dashboard.</p>
+          <div class="form-group">
+            <input type="password" id="dashboardPass" placeholder="Enter Password" required />
+          </div>
+          <button class="btn-primary" onclick="checkDashboardPassword()">Unlock</button>
+        </div>
+      </div>
+
+      <!-- Dashboard (Hidden Initially) -->
+      <div class="dashboard" id="dashboardSection" style="display: none;">
+        <div class="dash-card">
+          <h3>Disease Spread (Sample)</h3>
+          <canvas id="diseaseChart"></canvas>
+        </div>
+        <div class="dash-card">
+          <h3>Vaccination Coverage</h3>
+          <canvas id="vaccineChart"></canvas>
+        </div>
+        <div class="dash-card">
+          <h3>Monthly Checkups</h3>
+          <canvas id="checkupChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function checkDashboardPassword() {
+      const enteredPass = document.getElementById("dashboardPass").value;
+      if (enteredPass === "ditsa1234") {
+        document.getElementById("authSection").style.display = "none";
+        document.getElementById("dashboardSection").style.display = "grid";
+        loadCharts();
+      } else {
+        alert("❌ Incorrect password. Try again.");
+      }
+    }
+
+    function loadCharts() {
+      // Disease Spread Chart
+      new Chart(document.getElementById("diseaseChart"), {
+        type: "line",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          datasets: [{
+            label: "Cases",
+            data: [12, 19, 7, 14, 20, 25],
+            borderColor: "#0a9396",
+            fill: false,
+            tension: 0.3
+          }]
+        }
+      });
+
+      // Vaccination Coverage Chart
+      new Chart(document.getElementById("vaccineChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Vaccinated", "Not Vaccinated"],
+          datasets: [{
+            data: [75, 25],
+            backgroundColor: ["#0a9396", "#ffd166"]
+          }]
+        }
+      });
+
+      // Monthly Checkups Chart
+      new Chart(document.getElementById("checkupChart"), {
+        type: "bar",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          datasets: [{
+            label: "Checkups",
+            data: [30, 45, 40, 60, 55, 70],
+            backgroundColor: "#0a9396"
+          }]
+        }
+      });
+    }
+  </script>
+</body>
+</html>

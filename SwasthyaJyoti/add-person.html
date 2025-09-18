@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwasthyaJyoti — Add New Person</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="sub-style.css" />
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo" />
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html" class="active"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-user-plus"></i> Add New Person</h2>
+      </section>
+
+      <!-- Add Person Form -->
+      <div class="center-container">
+        <div class="form-card">
+          <h1>Register a New Person</h1>
+          <p class="form-sub">Enter Aadhaar, verify OTP, and then fill personal details.</p>
+
+          <!-- Aadhaar + Phone -->
+          <form id="otpForm" onsubmit="return false;">
+            <div class="form-group">
+              <label for="aadhaar"><i class="fa-solid fa-id-card"></i> Aadhaar Number</label>
+              <input type="text" id="aadhaar" placeholder="Enter Aadhaar Number" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone"><i class="fa-solid fa-phone"></i> Phone Number</label>
+              <input type="tel" id="phone" placeholder="Enter Phone Number" required />
+            </div>
+
+            <button type="button" class="btn-primary" onclick="generateOTP()">Send OTP</button>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="otp"><i class="fa-solid fa-key"></i> Enter OTP</label>
+              <input type="text" id="otp" placeholder="Enter OTP" required />
+            </div>
+            <button type="button" class="btn-primary" onclick="verifyOTP()">Verify OTP</button>
+          </form>
+
+          <!-- Personal Details Section -->
+          <div id="detailsSection" style="display: none; margin-top: 2rem;">
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #ddd;" />
+            <h2><i class="fa-solid fa-user"></i> Personal Details</h2>
+
+            <form id="detailsForm">
+              <div class="form-group">
+                <label for="name"><i class="fa-solid fa-user"></i> Full Name</label>
+                <input type="text" id="name" placeholder="Enter Full Name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="dob"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+                <input type="date" id="dob" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gender"><i class="fa-solid fa-venus-mars"></i> Gender</label>
+                <select id="gender" required>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="address"><i class="fa-solid fa-location-dot"></i> Address</label>
+                <textarea id="address" placeholder="Enter Address" rows="3" required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="photo"><i class="fa-solid fa-image"></i> Upload Photo</label>
+                <input type="file" id="photo" accept="image/*" />
+              </div>
+
+              <button type="submit" class="btn-primary">Save Details</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- OTP Script -->
+  <script>
+    let generatedOTP = null;
+
+    function generateOTP() {
+      generatedOTP = Math.floor(1000 + Math.random() * 9000); 
+      alert("OTP sent to your phone: " + generatedOTP); 
+    }
+
+    function verifyOTP() {
+      const otpInput = document.getElementById("otp").value;
+      if (otpInput == generatedOTP) {
+        alert("✅ OTP Verified Successfully!");
+        document.getElementById("detailsSection").style.display = "block";
+      } else {
+        alert("❌ Incorrect OTP, please try again.");
+      }
+    }
+  </script>
+</body>
+</html>

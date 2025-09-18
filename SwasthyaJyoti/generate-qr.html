@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwasthyaJyoti — Generate QR</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="sub-style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    #qrcode {
+      padding: 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      background: #0a9396;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      background: #007f83;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo" />
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="profile.html" class="active"><i class="fa fa-user"></i> Profile</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-qrcode"></i> Generate Your QR Code</h2>
+      </section>
+
+      <!-- QR Section -->
+      <div class="center-container">
+        <div class="form-card">
+          <h1>Generate Your Health QR</h1>
+          <p class="form-sub">This QR contains your essential details for quick healthcare access.</p>
+
+          <div class="qr-container">
+            <div id="qrcode"></div>
+            <div class="btn-group">
+              <button class="btn-primary" onclick="generateQR()">Generate QR</button>
+              <button class="btn-primary" onclick="downloadQR()">Download QR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    let qrGenerated = false;
+
+    function generateQR() {
+      const qrcodeContainer = document.getElementById("qrcode");
+      qrcodeContainer.innerHTML = ""; 
+
+      // Sample person details (replace with backend data later)
+      const personData = {
+        name: "Rahul Sharma",
+        dob: "1990-01-01",
+        gender: "Male",
+        phone: "+91XXXXXXXXXX",
+        address: "Delhi, India"
+      };
+
+      new QRCode(qrcodeContainer, {
+        text: JSON.stringify(personData, null, 2),
+        width: 220,
+        height: 220
+      });
+
+      qrGenerated = true;
+    }
+
+    function downloadQR() {
+      if (!qrGenerated) {
+        alert("Please generate the QR first.");
+        return;
+      }
+      const qrCanvas = document.querySelector("#qrcode canvas");
+      const link = document.createElement("a");
+      link.download = "SwasthyaJyoti-QR.png";
+      link.href = qrCanvas.toDataURL("image/png");
+      link.click();
+    }
+  </script>
+</body>
+</html>

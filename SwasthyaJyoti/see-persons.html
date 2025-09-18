@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwasthyaJyoti — See Registered Persons</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="sub-style.css" />
+  <style>
+    .form-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .btn-primary {
+      display: inline-block;
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 8px;
+      border: none;
+      background: #0a9396;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      background: #007f83;
+    }
+
+    /* Persons List */
+    .persons-list {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .person-card {
+      background: #f6fefc;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+    .person-card:hover {
+      transform: translateY(-2px);
+    }
+    .person-card a {
+      color: #0a9396;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo" />
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="see-persons.html" class="active"><i class="fa fa-users"></i> See Persons</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-lock"></i> Officer Access</h2>
+      </section>
+
+      <!-- Password Form -->
+      <div class="center-container" id="authSection">
+        <div class="form-card">
+          <h1><i class="fa-solid fa-key"></i> Enter Officer Password</h1>
+          <p class="form-sub">Only authorized officers can access this page.</p>
+          <div class="form-group">
+            <input type="password" id="officerPass" placeholder="Enter Password" required />
+          </div>
+          <button class="btn-primary" onclick="checkPassword()">Unlock</button>
+        </div>
+      </div>
+
+      <!-- Persons List-->
+      <div class="center-container" id="personsSection" style="display: none;">
+        <div class="form-card" style="max-width:700px; width:100%;">
+          <h1><i class="fa-solid fa-users"></i> Registered Persons</h1>
+          <p class="form-sub">Click on a name to view details & QR code.</p>
+          <div class="persons-list" id="personsList">
+            <!-- Filled dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function checkPassword() {
+      const enteredPass = document.getElementById("officerPass").value;
+      if (enteredPass === "ditsa1234") {
+        document.getElementById("authSection").style.display = "none";
+        document.getElementById("personsSection").style.display = "flex";
+        loadPersons();
+      } else {
+        alert("❌ Incorrect password. Try again.");
+      }
+    }
+
+    function loadPersons() {
+      const list = document.getElementById("personsList");
+
+      // Try fetching from backend
+      fetch("/api/persons")
+        .then(res => {
+          if (!res.ok) throw new Error("Backend not connected");
+          return res.json();
+        })
+        .then(data => {
+          list.innerHTML = "";
+          data.forEach(person => {
+            const div = document.createElement("div");
+            div.className = "person-card";
+            div.innerHTML = `
+              <span>${person.name}</span>
+              <a href="person-details.html?id=${person._id}">
+                <i class="fa fa-eye"></i> View
+              </a>
+            `;
+            list.appendChild(div);
+          });
+        })
+        .catch(() => {
+          // Fallback sample data
+          list.innerHTML = `
+            <div class="person-card">
+              <span>Rahul Sharma</span>
+              <a href="person-details.html?id=1"><i class="fa fa-eye"></i> View</a>
+            </div>
+            <div class="person-card">
+              <span>Anjali Verma</span>
+              <a href="person-details.html?id=2"><i class="fa fa-eye"></i> View</a>
+            </div>
+            <div class="person-card">
+              <span>Ramesh Kumar</span>
+              <a href="person-details.html?id=3"><i class="fa fa-eye"></i> View</a>
+            </div>
+            <div class="person-card">
+              <span>Sita Devi</span>
+              <a href="person-details.html?id=4"><i class="fa fa-eye"></i> View</a>
+            </div>
+          `;
+        });
+    }
+  </script>
+</body>
+</html>

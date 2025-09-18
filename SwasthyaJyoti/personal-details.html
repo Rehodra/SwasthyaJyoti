@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwasthyaJyoti — Personal Details</title>
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="sub-style.css"/>
+  <style>
+    /* Details Card */
+    .details-card {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .details-card h1 {
+      margin-bottom: 1rem;
+      color: #023047;
+      font-size: 1.6rem;
+    }
+
+    .details-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .details-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .details-list li span:first-child {
+      font-weight: 600;
+      color: #0a9396;
+    }
+
+    .details-list li span:last-child {
+      color: #333;
+    }
+
+    .profile-photo {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-photo img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0a9396;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo"/>
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="profile.html" class="active"><i class="fa fa-user"></i> Profile</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-user"></i> Personal Details</h2>
+      </section>
+
+      <!-- Details -->
+      <div class="center-container">
+        <div class="details-card">
+          <div class="profile-photo">
+            <img src="images/placeholder-profile.png" alt="Profile Photo"/>
+          </div>
+          <h1>Rahul Sharma</h1>
+          <ul class="details-list">
+            <li><span>Aadhaar:</span> <span>1234 5678 9012</span></li>
+            <li><span>Phone:</span> <span>+91 9876543210</span></li>
+            <li><span>Date of Birth:</span> <span>12 March 1990</span></li>
+            <li><span>Gender:</span> <span>Male</span></li>
+            <li><span>Address:</span> <span>Sector 10, Dwarka, New Delhi</span></li>
+            <li><span>ABHA ID:</span> <span>rahul123@abdm</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
