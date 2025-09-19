@@ -11,16 +11,16 @@
   <link rel="stylesheet" href="sub-style.css">
   <style>
     .site-footer {
-  position: fixed;
-  bottom: 0;
-  left: 280px; 
-  width: calc(100% - 280px);
-  background: #023047;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-}
+      position: fixed;
+      bottom: 0;
+      left: 280px; 
+      width: calc(100% - 280px);
+      background: #023047;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -107,6 +107,7 @@
                 <th>Residents After</th>
                 <th>Registered</th>
                 <th>Disease Prediction %</th>
+                <th>Most Spread Disease</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -120,93 +121,47 @@
         </div>
 
         <!-- Reports Section -->
-<div id="reports" class="section" style="display:none;">
-  <h2><i class="fa fa-file-alt"></i> Reports</h2>
-  <p>Download official health reports and analytics.</p>
-  <div class="cards">
-    <div class="card">
-      <i class="fa fa-file-pdf"></i>
-      <h3>Monthly Report</h3>
-      <p>Download detailed health data and analytics for this month.</p>
-      <button class="btn-primary">Download PDF</button>
-    </div>
-    <div class="card">
-      <i class="fa fa-file-excel"></i>
-      <h3>State-wise Data</h3>
-      <p>Get all registered data and trends in spreadsheet format.</p>
-      <button class="btn-primary">Download Excel</button>
-    </div>
-    <div class="card">
-      <i class="fa fa-chart-bar"></i>
-      <h3>Analytics Report</h3>
-      <p>Graphical representation of disease trends and predictions.</p>
-      <button class="btn-primary">Download Charts</button>
-    </div>
-  </div>
-</div>
+        <div id="reports" class="section" style="display:none;">
+          <h2><i class="fa fa-file-alt"></i> Reports</h2>
+          <p>Download official health reports and analytics.</p>
+          <div class="cards">
+            <div class="card"><i class="fa fa-file-pdf"></i><h3>Monthly Report</h3><p>Detailed data for this month.</p><button class="btn-primary">Download PDF</button></div>
+            <div class="card"><i class="fa fa-file-excel"></i><h3>State-wise Data</h3><p>Full dataset in Excel.</p><button class="btn-primary">Download Excel</button></div>
+            <div class="card"><i class="fa fa-chart-bar"></i><h3>Analytics Report</h3><p>Graphs & statistics.</p><button class="btn-primary">Download Charts</button></div>
+          </div>
+        </div>
 
-<!-- Settings Section -->
-<div id="settings" class="section" style="display:none;">
-  <h2><i class="fa fa-cog"></i> Settings</h2>
-  <p>Customize your dashboard preferences.</p>
-  <div class="form-card">
-    <h3>Notification Preferences</h3>
-    <form>
-      <div class="form-group">
-        <label><input type="checkbox" checked> Email Alerts</label>
-      </div>
-      <div class="form-group">
-        <label><input type="checkbox"> SMS Alerts</label>
-      </div>
-      <div class="form-group">
-        <label><input type="checkbox" checked> Vaccination Reminders</label>
-      </div>
-      <button type="submit" class="btn-primary">Save Settings</button>
-    </form>
-  </div>
-  
-</div>
+        <!-- Settings Section -->
+        <div id="settings" class="section" style="display:none;">
+          <h2><i class="fa fa-cog"></i> Settings</h2>
+          <div class="form-card">
+            <h3>Notification Preferences</h3>
+            <form>
+              <div class="form-group"><label><input type="checkbox" checked> Email Alerts</label></div>
+              <div class="form-group"><label><input type="checkbox"> SMS Alerts</label></div>
+              <div class="form-group"><label><input type="checkbox" checked> Vaccination Reminders</label></div>
+              <button type="submit" class="btn-primary">Save Settings</button>
+            </form>
+          </div>
+        </div>
 
-<!-- Help Section -->
-<div id="help" class="section" style="display:none;">
-  <h2><i class="fa fa-circle-question"></i> Help Centre</h2>
-  <p>Find quick answers to common questions below.</p>
-  <div class="faq-item">
-    <h4><i class="fa fa-user"></i> How do I register a new person?</h4>
-    <p>Go to the <strong>Register</strong> page, verify OTP, and fill in personal details to create a profile.</p>
-  </div>
-  <div class="faq-item">
-    <h4><i class="fa fa-qrcode"></i> How do I generate a QR code?</h4>
-    <p>Navigate to the <strong>Generate QR</strong> section under Profile and click on "Download QR".</p>
-  </div>
-  <div class="faq-item">
-    <h4><i class="fa fa-chart-line"></i> What is disease prediction %?</h4>
-    <p>This indicates the predicted spread of communicable diseases among registered arrivals in each state.</p>
-  </div>
-</div>
+        <!-- Help Section -->
+        <div id="help" class="section" style="display:none;">
+          <h2><i class="fa fa-circle-question"></i> Help Centre</h2>
+          <div class="faq-item"><h4><i class="fa fa-user"></i> How do I register?</h4><p>Verify OTP and fill in personal details.</p></div>
+          <div class="faq-item"><h4><i class="fa fa-qrcode"></i> How do I generate a QR?</h4><p>Go to Profile → Generate QR → Download QR.</p></div>
+          <div class="faq-item"><h4><i class="fa fa-chart-line"></i> What is disease prediction %?</h4><p>Shows estimated spread among arrivals.</p></div>
+        </div>
 
-<!-- Contact Section -->
-<div id="contact" class="section" style="display:none;">
-  <h2><i class="fa fa-envelope"></i> Contact Us</h2>
-  <p>If you have queries or need support, reach out to us:</p>
-  <div class="cards">
-    <div class="card">
-      <i class="fa fa-envelope"></i>
-      <h3>Email</h3>
-      <p>healthsupport@kerala.gov.in</p>
-    </div>
-    <div class="card">
-      <i class="fa fa-phone"></i>
-      <h3>Phone</h3>
-      <p>+91-471-1234567</p>
-    </div>
-    <div class="card">
-      <i class="fa fa-map-marker-alt"></i>
-      <h3>Address</h3>
-      <p>Department of Health, Govt. of Kerala, Thiruvananthapuram</p>
-    </div>
-  </div>
-</div>
+        <!-- Contact Section -->
+        <div id="contact" class="section" style="display:none;">
+          <h2><i class="fa fa-envelope"></i> Contact Us</h2>
+          <div class="cards">
+            <div class="card"><i class="fa fa-envelope"></i><h3>Email</h3><p>healthsupport@kerala.gov.in</p></div>
+            <div class="card"><i class="fa fa-phone"></i><h3>Phone</h3><p>+91-471-1234567</p></div>
+            <div class="card"><i class="fa fa-map-marker-alt"></i><h3>Address</h3><p>Dept. of Health, Kerala</p></div>
+          </div>
+        </div>
 
         <!-- Footer -->
         <footer class="site-footer">
@@ -218,66 +173,81 @@
 
   <!-- JS -->
   <script>
-    // ===== Navigation =====
     function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-      document.getElementById(sectionId).style.display = 'block';
-      document.getElementById('page-title').innerText =
-        sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
-    }
+  // Hide all sections
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
 
-    // ===== Sample Data for 28 States =====
+  // Show the selected section
+  document.getElementById(sectionId).style.display = 'block';
+
+  // Update page title
+  document.getElementById('page-title').innerText =
+    sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+
+  // Remove 'active' from all sidebar links
+  document.querySelectorAll('.sidebar nav a').forEach(link => link.classList.remove('active'));
+
+  // Add 'active' to the clicked link
+  const clickedLink = Array.from(document.querySelectorAll('.sidebar nav a'))
+    .find(link => link.getAttribute('onclick').includes(sectionId));
+  if (clickedLink) clickedLink.classList.add('active');
+}
+
+
+    // States Data
     const statesData = [
-  { state: "Andhra Pradesh", residents: 500000, arrivals: 20000, regArrivals: 12000, disease: 12 },
-  { state: "Arunachal Pradesh", residents: 150000, arrivals: 5000, regArrivals: 2500, disease: 9 },
-  { state: "Assam", residents: 600000, arrivals: 30000, regArrivals: 18000, disease: 15 },
-  { state: "Bihar", residents: 1200000, arrivals: 50000, regArrivals: 30000, disease: 18 },
-  { state: "Chhattisgarh", residents: 450000, arrivals: 15000, regArrivals: 9000, disease: 11 },
-  { state: "Delhi", residents: 1000000, arrivals: 60000, regArrivals: 40000, disease: 7 },
-  { state: "Goa", residents: 120000, arrivals: 4000, regArrivals: 2500, disease: 5 },
-  { state: "Gujarat", residents: 950000, arrivals: 35000, regArrivals: 20000, disease: 13 },
-  { state: "Haryana", residents: 480000, arrivals: 18000, regArrivals: 10000, disease: 14 },
-  { state: "Himachal Pradesh", residents: 180000, arrivals: 7000, regArrivals: 4000, disease: 10 },
-  { state: "Jharkhand", residents: 500000, arrivals: 20000, regArrivals: 12000, disease: 12 },
-  { state: "Karnataka", residents: 950000, arrivals: 40000, regArrivals: 25000, disease: 16 },
-  { state: "Kerala", residents: 850000, arrivals: 10000, regArrivals: 7000, disease: 8 },
-  { state: "Madhya Pradesh", residents: 1100000, arrivals: 45000, regArrivals: 30000, disease: 19 },
-  { state: "Maharashtra", residents: 1500000, arrivals: 60000, regArrivals: 40000, disease: 20 },
-  { state: "Manipur", residents: 130000, arrivals: 5000, regArrivals: 3000, disease: 6 },
-  { state: "Meghalaya", residents: 140000, arrivals: 6000, regArrivals: 3500, disease: 9 },
-  { state: "Mizoram", residents: 120000, arrivals: 4000, regArrivals: 2500, disease: 7 },
-  { state: "Nagaland", residents: 110000, arrivals: 3500, regArrivals: 2000, disease: 8 },
-  { state: "Odisha", residents: 700000, arrivals: 25000, regArrivals: 15000, disease: 15 },
-  { state: "Punjab", residents: 600000, arrivals: 20000, regArrivals: 12000, disease: 12 },
-  { state: "Rajasthan", residents: 950000, arrivals: 35000, regArrivals: 20000, disease: 16 },
-  { state: "Sikkim", residents: 80000, arrivals: 3000, regArrivals: 2000, disease: 5 },
-  { state: "Tamil Nadu", residents: 1200000, arrivals: 40000, regArrivals: 25000, disease: 14 },
-  { state: "Telangana", residents: 800000, arrivals: 28000, regArrivals: 18000, disease: 12 },
-  { state: "Tripura", residents: 160000, arrivals: 6000, regArrivals: 3500, disease: 10 },
-  { state: "Uttar Pradesh", residents: 2000000, arrivals: 75000, regArrivals: 50000, disease: 22 },
-  { state: "Uttarakhand", residents: 300000, arrivals: 12000, regArrivals: 8000, disease: 9 },
-  { state: "West Bengal", residents: 1400000, arrivals: 70000, regArrivals: 45000, disease: 17 }
+  { state: "Andhra Pradesh", residents: 500000, arrivals: 20000, regArrivals: 12000, disease: 12, diseaseName: "Dengue" },
+  { state: "Arunachal Pradesh", residents: 150000, arrivals: 5000, regArrivals: 2500, disease: 9, diseaseName: "Malaria" },
+  { state: "Assam", residents: 600000, arrivals: 30000, regArrivals: 18000, disease: 15, diseaseName: "Japanese Encephalitis" },
+  { state: "Bihar", residents: 1200000, arrivals: 50000, regArrivals: 30000, disease: 18, diseaseName: "Tuberculosis" },
+  { state: "Chhattisgarh", residents: 450000, arrivals: 15000, regArrivals: 9000, disease: 11, diseaseName: "Malaria" },
+  { state: "Delhi", residents: 1000000, arrivals: 60000, regArrivals: 40000, disease: 7, diseaseName: "Dengue" },
+  { state: "Goa", residents: 120000, arrivals: 4000, regArrivals: 2500, disease: 5, diseaseName: "Leptospirosis" },
+  { state: "Gujarat", residents: 950000, arrivals: 35000, regArrivals: 20000, disease: 13, diseaseName: "Chikungunya" },
+  { state: "Haryana", residents: 480000, arrivals: 18000, regArrivals: 10000, disease: 14, diseaseName: "Tuberculosis" },
+  { state: "Himachal Pradesh", residents: 180000, arrivals: 7000, regArrivals: 4000, disease: 10, diseaseName: "Respiratory Infections" },
+  { state: "Jharkhand", residents: 500000, arrivals: 20000, regArrivals: 12000, disease: 12, diseaseName: "Malaria" },
+  { state: "Karnataka", residents: 950000, arrivals: 40000, regArrivals: 25000, disease: 16, diseaseName: "Dengue" },
+  { state: "Kerala", residents: 850000, arrivals: 10000, regArrivals: 7000, disease: 8, diseaseName: "Nipah Virus" },
+  { state: "Madhya Pradesh", residents: 1100000, arrivals: 45000, regArrivals: 30000, disease: 19, diseaseName: "Malaria" },
+  { state: "Maharashtra", residents: 1500000, arrivals: 60000, regArrivals: 40000, disease: 20, diseaseName: "Tuberculosis" },
+  { state: "Manipur", residents: 130000, arrivals: 5000, regArrivals: 3000, disease: 6, diseaseName: "HIV/AIDS" },
+  { state: "Meghalaya", residents: 140000, arrivals: 6000, regArrivals: 3500, disease: 9, diseaseName: "Malaria" },
+  { state: "Mizoram", residents: 120000, arrivals: 4000, regArrivals: 2500, disease: 7, diseaseName: "HIV/AIDS" },
+  { state: "Nagaland", residents: 110000, arrivals: 3500, regArrivals: 2000, disease: 8, diseaseName: "Tuberculosis" },
+  { state: "Odisha", residents: 700000, arrivals: 25000, regArrivals: 15000, disease: 15, diseaseName: "Malaria" },
+  { state: "Punjab", residents: 600000, arrivals: 20000, regArrivals: 12000, disease: 12, diseaseName: "Hepatitis C" },
+  { state: "Rajasthan", residents: 950000, arrivals: 35000, regArrivals: 20000, disease: 16, diseaseName: "Swine Flu" },
+  { state: "Sikkim", residents: 80000, arrivals: 3000, regArrivals: 2000, disease: 5, diseaseName: "Respiratory Infections" },
+  { state: "Tamil Nadu", residents: 1200000, arrivals: 40000, regArrivals: 25000, disease: 14, diseaseName: "Dengue" },
+  { state: "Telangana", residents: 800000, arrivals: 28000, regArrivals: 18000, disease: 12, diseaseName: "Chikungunya" },
+  { state: "Tripura", residents: 160000, arrivals: 6000, regArrivals: 3500, disease: 10, diseaseName: "Malaria" },
+  { state: "Uttar Pradesh", residents: 2000000, arrivals: 75000, regArrivals: 50000, disease: 22, diseaseName: "Tuberculosis" },
+  { state: "Uttarakhand", residents: 300000, arrivals: 12000, regArrivals: 8000, disease: 9, diseaseName: "Respiratory Infections" },
+  { state: "West Bengal", residents: 1400000, arrivals: 70000, regArrivals: 45000, disease: 17, diseaseName: "Dengue" }
 ];
 
-    // ===== Load Dashboard Data =====
-    function loadDashboardData() {
-      // Table
-      const tableBody = document.querySelector("#statesTable tbody");
-      tableBody.innerHTML = "";
-      statesData.forEach(s => {
-        const before = s.residents;
-        const after = s.residents + s.arrivals;
-        const row = `
-          <tr>
-            <td>${s.state}</td>
-            <td>${before.toLocaleString()}</td>
-            <td>${s.arrivals.toLocaleString()}</td>
-            <td>${after.toLocaleString()}</td>
-            <td>${s.regArrivals.toLocaleString()}</td>
-            <td>${s.disease}%</td>
-          </tr>`;
-        tableBody.innerHTML += row;
-      });
+// ===== Populate Table =====
+function loadDashboardData() {
+  const tableBody = document.querySelector("#statesTable tbody");
+  tableBody.innerHTML = "";
+  statesData.forEach(s => {
+    const before = s.residents;
+    const after = s.residents + s.arrivals;
+    const row = `
+      <tr>
+        <td>${s.state}</td>
+        <td>${before.toLocaleString()}</td>
+        <td>${s.arrivals.toLocaleString()}</td>
+        <td>${after.toLocaleString()}</td>
+        <td>${s.regArrivals.toLocaleString()}</td>
+        <td>${s.disease}%</td>
+        <td>${s.diseaseName}</td>
+      </tr>`;
+    tableBody.innerHTML += row;
+  });
+
+
 
       // Totals
       const totalResidents = statesData.reduce((sum, s) => sum + s.residents + s.arrivals, 0);
@@ -288,7 +258,6 @@
       document.getElementById("totalRegistered").innerText = totalRegisteredArrivals.toLocaleString();
       document.getElementById("avgPrediction").innerText = avgPrediction + "%";
 
-      // Charts
       new Chart(document.getElementById("overviewChart"), {
         type: "bar",
         data: {
@@ -298,10 +267,7 @@
             { label: "Registered Among Arrivals", data: statesData.map(s => s.regArrivals), backgroundColor: "#3bc9db" }
           ]
         },
-        options: {
-          responsive: true,
-          scales: { x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 } } }
-        }
+        options: { responsive: true, scales: { x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 } } } }
       });
 
       new Chart(document.getElementById("diseaseChart"), {
@@ -315,7 +281,6 @@
       });
     }
 
-    // ===== Password Check =====
     function checkDashboardAccess() {
       const password = document.getElementById("dashboardPass").value;
       if (password === "ditsa1234") {
