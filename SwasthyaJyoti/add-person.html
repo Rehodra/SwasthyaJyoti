@@ -23,7 +23,6 @@
           <a href="index.html"><i class="fa fa-home"></i> Home</a>
           <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
           <a href="register.html" class="active"><i class="fa fa-user-plus"></i> Register</a>
-          <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
         </nav>
       </div>
       <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
@@ -114,22 +113,38 @@
 
   <!-- OTP Script -->
   <script>
-    let generatedOTP = null;
+  let generatedOTP = null;
 
-    function generateOTP() {
-      generatedOTP = Math.floor(1000 + Math.random() * 9000); 
-      alert("OTP sent to your phone: " + generatedOTP); 
+  function generateOTP() {
+    const aadhaar = document.getElementById("aadhaar").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const aadhaarRegex = /^[0-9]{12}$/;
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if (!aadhaarRegex.test(aadhaar)) {
+      alert("⚠️ Please enter a valid 12-digit Aadhaar number.");
+      return;
     }
 
-    function verifyOTP() {
-      const otpInput = document.getElementById("otp").value;
-      if (otpInput == generatedOTP) {
-        alert("✅ OTP Verified Successfully!");
-        document.getElementById("detailsSection").style.display = "block";
-      } else {
-        alert("❌ Incorrect OTP, please try again.");
-      }
+    if (!phoneRegex.test(phone)) {
+      alert("⚠️ Please enter a valid 10-digit phone number.");
+      return;
     }
-  </script>
+
+    generatedOTP = Math.floor(1000 + Math.random() * 9000);
+    alert("📲 OTP sent to your phone: " + generatedOTP);
+  }
+
+  function verifyOTP() {
+    const otpInput = document.getElementById("otp").value.trim();
+    if (otpInput === generatedOTP?.toString()) {
+      alert("✅ OTP Verified Successfully!");
+      document.getElementById("detailsSection").style.display = "block";
+    } else {
+      alert("❌ Incorrect OTP, please try again.");
+    }
+  }
+</script>
+
 </body>
 </html>
