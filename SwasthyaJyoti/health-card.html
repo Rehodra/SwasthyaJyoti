@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SwasthyaJyoti — Health Card</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="sub-style.css" />
+  <!-- QR lib + html2canvas + jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    .center-container { padding: 2.5rem 2rem; }
+    .health-card {
+      width: 900px;
+      max-width: calc(100% - 40px);
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(2,36,43,0.08);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .hc-left { padding-right: 0.5rem; }
+    .hc-top {
+      display:flex;
+      gap:1rem;
+      align-items:center;
+    }
+    .hc-photo {
+      width:110px;
+      height:110px;
+      border-radius: 12px;
+      overflow:hidden;
+      flex: 0 0 110px;
+      background: #f0f6f6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hc-photo img { width:100%; height:100%; object-fit:cover; }
+
+    .hc-personal {
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .hc-personal .name { font-size:1.25rem; font-weight:700; color:#023047; }
+    .hc-personal .meta { color:#556; font-weight:600; }
+
+    .addresses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .addr {
+      background:#f6fefc;
+      padding:0.9rem;
+      border-radius:8px;
+      border:1px solid #e6f7f6;
+    }
+    .addr h4 { margin-bottom:0.5rem; color:#0a9396; }
+
+    .hc-right {
+      display:flex;
+      flex-direction:column;
+      gap: 0.9rem;
+      align-items:center;
+    }
+    .qr-box {
+      width:100%;
+      height:300px;
+      background:white;
+      border-radius:8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border: 1px solid #e8f4f4;
+    }
+    .qr-box canvas {
+      width:100% !important;
+      height:100% !important;
+    }
+    .qr-caption {
+      text-align:center;
+      font-size:0.95rem;
+      color:#335;
+      margin-top:6px;
+    }
+
+    .hc-details {
+      width:100%;
+      background:#fff;
+      border-radius:8px;
+      padding:0.9rem;
+      border:1px solid #eef8f8;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .hc-row {
+      display:flex;
+      gap:0.75rem;
+      justify-content:space-between;
+      margin-bottom:0.4rem;
+    }
+    .hc-row strong { color:#023047; }
+
+    .btn-download, .btn-print {
+      margin-top:8px;
+      padding: 0.7rem 1rem;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      width:100%;
+    }
+    .btn-download {
+      background:#0a9396;
+      color:#fff;
+      border:none;
+    }
+    .btn-print {
+      background:#fff;
+      color:#0a9396;
+      border: 2px solid #0a9396;
+    }
+
+    .btn-download:hover {
+    background:#007f83;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .btn-print:hover {
+    background:#0a9396;
+    color:#fff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+    @media (max-width: 980px) {
+      .health-card { grid-template-columns: 1fr; }
+      .hc-right { order: -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <img src="images/logo.png" alt="logo" />
+          <h2>SwasthyaJyoti</h2>
+          <div class="sub">Your Health, Our Mission</div>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="login.html"><i class="fa fa-sign-in-alt"></i> Login</a>
+          <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+          <a href="profile.html" class="active"><i class="fa fa-user"></i> Profile</a>
+        </nav>
+      </div>
+      <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Banner -->
+      <section class="page-banner">
+        <h2><i class="fa-solid fa-id-card"></i> My Health Card</h2>
+      </section>
+
+      <div class="center-container">
+        <div id="healthCard" class="health-card">
+          <!-- Left -->
+          <div class="hc-left">
+            <div class="hc-top">
+              <div class="hc-photo">
+                <img id="personPhoto" src="images/placeholder-profile.png" alt="Person photo" />
+              </div>
+              <div class="hc-personal">
+                <div class="name" id="personName">Rahul Sharma</div>
+                <div class="meta" id="personMeta">Age: 29 • Male</div>
+                <div class="meta">ABHA: <strong id="abha">ABHA123456789</strong></div>
+                <div class="meta">UID: <strong id="uid">12345</strong></div>
+              </div>
+            </div>
+
+            <div style="margin-top:1rem;">
+              <h4 style="color:#023047; margin-bottom:8px;">Personal Details</h4>
+              <div class="hc-details">
+                <div class="hc-row"><div><strong>Blood Group:</strong> O+</div><div><strong>Height:</strong> 170 cm</div></div>
+                <div class="hc-row"><div><strong>Weight:</strong> 68 kg</div><div><strong>Allergies:</strong> None</div></div>
+                <div class="hc-row"><div><strong>Contact:</strong> +91-98xxxxxx</div></div>
+              </div>
+            </div>
+
+            <div style="margin-top:1rem;">
+              <h4 style="color:#023047; margin-bottom:8px;">Addresses</h4>
+              <div class="addresses">
+                <div class="addr">
+                  <h4>Present Address</h4>
+                  <div>Village: Punalur</div>
+                  <div>District: Kollam</div>
+                  <div>State: Kerala</div>
+                </div>
+                <div class="addr">
+                  <h4>Past Address</h4>
+                  <div>Locality: Sector 14</div>
+                  <div>City: Gurugram</div>
+                  <div>State: Haryana</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="hc-right">
+            <div class="qr-box">
+              <div id="qrcode"></div>
+            </div>
+            <div class="qr-caption">Scan this QR to get the medical history</div>
+
+            <button class="btn-download" id="downloadBtn"><i class="fa fa-download"></i> Download Health Card (PDF)</button>
+            <button class="btn-print" id="printBtn"><i class="fa fa-print"></i> Print</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const person = {
+      uid: '12345',
+      name: 'Rahul Sharma',
+      age: 29,
+      gender: 'Male',
+      abha: 'ABHA123456789',
+      photo: 'images/placeholder-profile.png'
+    };
+
+    document.getElementById('personName').innerText = person.name;
+    document.getElementById('personMeta').innerText = `Age: ${person.age} • ${person.gender}`;
+    document.getElementById('abha').innerText = person.abha;
+    document.getElementById('uid').innerText = person.uid;
+    document.getElementById('personPhoto').src = person.photo;
+
+    // Generate QR
+    const qr = new QRCode(document.getElementById("qrcode"), {
+      text: `medical-history.html?uid=${person.uid}`,
+      width: 300,
+      height: 300,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Download PDF
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      const card = document.getElementById('healthCard');
+      const canvas = await html2canvas(card, { scale: 2, useCORS: true });
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('landscape', 'pt', [canvas.width, canvas.height]);
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save(`${person.name.replace(/\s+/g,'_')}_health_card.pdf`);
+    });
+
+    // Print
+    document.getElementById('printBtn').addEventListener('click', () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
