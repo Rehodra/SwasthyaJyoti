@@ -352,3 +352,99 @@ h1 { font-size: 2rem; margin: 0; }
     }
     .actions button:hover { background: #f9f9f9; }
     .actions span { margin-top: 6px; font-size: 0.9rem; }
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn.active {
+      background: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+    .btn:hover {
+      background: #eee;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bar-container {
+      display: flex;
+      gap: 4px;
+      height: 40px;
+      align-items: flex-end;
+    }
+    .bar {
+      flex: 1;
+      background: #007bff;
+      border-radius: 4px;
+      transition: height 0.3s;
+    }
+    .progress {
+      background: #e9ecef;
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress div {
+      height: 100%;
+      background: #007bff;
+    }
+    .risk {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      background: #fdfdfd;
+    }
+    .risk .prob {
+      font-weight: bold;
+    }
+    .prob-high { color: red; }
+    .prob-mid { color: orange; }
+    .prob-low { color: green; }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card h3 { margin: 0; font-size: 1rem; color: #666; }
+    .card p { margin: 10px 0 0; font-size: 1.5rem; font-weight: bold; }
+    .blue { color: #007bff; }
+    .cyan { color: #17a2b8; }
+    .red { color: #dc3545; }
+    .chart-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    canvas {
+      max-height: 500px;
+    }

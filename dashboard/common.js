@@ -126,3 +126,48 @@ function loadDiseaseTrends() {
         }
     });
 }
+function setPeriod(period) {
+      document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      console.log("Selected period:", period);
+    }
+    // Example dataset (replace with your real data)
+    const states = [
+      "Andhra Pradesh","Assam","Bihar","Delhi","Gujarat","Karnataka","Maharashtra","Tamil Nadu","Uttar Pradesh","West Bengal"
+    ];
+    const newArrivals = [20000,30000,50000,60000,35000,40000,60000,40000,75000,70000];
+    const registered = [12000,20000,30000,40000,20000,25000,40000,30000,50000,45000];
+    const affected = [3000,5000,8000,2000,4000,5000,12000,6000,15000,10000];
+
+    // KPI Values
+    const totalMigrants = newArrivals.reduce((a,b) => a+b, 0);
+    const totalRegistered = registered.reduce((a,b) => a+b, 0);
+    const avgAffected = ((affected.reduce((a,b) => a+b, 0) / totalMigrants) * 100).toFixed(2);
+
+    document.getElementById("totalMigrants").textContent = totalMigrants.toLocaleString();
+    document.getElementById("totalRegistered").textContent = totalRegistered.toLocaleString();
+    document.getElementById("avgAffected").textContent = avgAffected + "%";
+
+    // Chart.js
+    const ctx = document.getElementById("overviewChart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: states,
+        datasets: [
+          { label: "New Arrivals", data: newArrivals, backgroundColor: "#007bff" },
+          { label: "Registered Migrants", data: registered, backgroundColor: "#17a2b8" },
+          { label: "Affected Migrants", data: affected, backgroundColor: "#dc3545" }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "top" },
+          tooltip: { mode: "index", intersect: false }
+        },
+        scales: {
+          y: { beginAtZero: true, ticks: { callback: val => val.toLocaleString() } }
+        }
+      }
+    });

@@ -144,6 +144,141 @@
 
     <!-- Disease Trends Chart -->
     <div class="card">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migrant Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 15px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card h3 { margin: 0; font-size: 1rem; color: #666; }
+    .card p { margin: 10px 0 0; font-size: 1.5rem; font-weight: bold; }
+    .blue { color: #007bff; }
+    .cyan { color: #17a2b8; }
+    .red { color: #dc3545; }
+    .chart-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    canvas {
+      max-height: 500px;
+    }
+    .chart-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  height: 300px;   /* ✅ keeps bars steady */
+}
+    .progress {
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 10px;
+      margin-top: 5px;
+    }
+    .progress div {
+      height: 100%;
+      background: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📊 Migrant Analytics Dashboard</h1>
+
+  <!-- KPI Cards -->
+  <div class="cards">
+    <div class="card">
+      <h3>Total Migrants</h3>
+      <p id="totalMigrants" class="blue">0</p>
+    </div>
+    <div class="card">
+      <h3>Total Migrants Registered</h3>
+      <p id="totalRegistered" class="cyan">0</p>
+    </div>
+    <div class="card">
+      <h3>Avg % of Affected Migrants</h3>
+      <p id="avgAffected" class="red">0%</p>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-container">
+    <canvas id="overviewChart"></canvas>
+  </div>
+
+  <script>
+  // Example dataset (replace with your real data)
+  const states = [
+    "Andhra Pradesh","Assam","Bihar","Delhi","Gujarat","Karnataka","Maharashtra","Tamil Nadu","Uttar Pradesh","West Bengal"
+  ];
+  const newArrivals = [20000,30000,50000,60000,35000,40000,60000,40000,75000,70000];
+  const registered = [12000,20000,30000,40000,20000,25000,40000,30000,50000,45000];
+  const affected = [3000,5000,8000,2000,4000,5000,12000,6000,15000,10000];
+
+  // KPI Values
+  const totalMigrants = newArrivals.reduce((a,b) => a+b, 0);
+  const totalRegistered = registered.reduce((a,b) => a+b, 0);
+  const avgAffected = ((affected.reduce((a,b) => a+b, 0) / totalMigrants) * 100).toFixed(2);
+
+  document.getElementById("totalMigrants").textContent = totalMigrants.toLocaleString();
+  document.getElementById("totalRegistered").textContent = totalRegistered.toLocaleString();
+  document.getElementById("avgAffected").textContent = avgAffected + "%";
+
+  // Chart.js
+  const ctx = document.getElementById("overviewChart").getContext("2d");
+  new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: states,
+    datasets: [
+      { label: "New Arrivals", data: newArrivals, backgroundColor: "#007bff" },
+      { label: "Registered Migrants", data: registered, backgroundColor: "#17a2b8" },
+      { label: "Affected Migrants", data: affected, backgroundColor: "#dc3545" }
+    ]
+  },
+  options: {
+    responsive: true,
+    animation: false,  // 🚀 disables all animations
+    plugins: {
+      legend: { position: "top" },
+      tooltip: { mode: "index", intersect: false }
+    },
+    scales: {
+      y: { beginAtZero: true, ticks: { callback: val => val.toLocaleString() } }
+    }
+  }
+});
+</script>
+
+
+</body>
+</html>
         
     </div>
   </div>
