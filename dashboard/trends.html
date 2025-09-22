@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwasthyaJyoti — Disease Trends</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="brand">
+                    <img src="images/logo.png" alt="logo" />
+                    <h2>SwasthyaJyoti</h2>
+                    <div class="sub">Your Health, Our Mission</div>
+                </div>
+                <nav>
+                    <a href="dashboard.html">
+                        <i class="fa fa-chart-pie"></i> Dashboard
+                    </a>
+                    <a href="statesData.html">
+                        <i class="fa fa-map"></i> States Data
+                    </a>
+                    <a href="trends.html" class="active">
+                        <i class="fa fa-chart-line"></i> Disease Trends
+                    </a>
+                    <a href="reports.html">
+                        <i class="fa fa-file-alt"></i> Reports
+                    </a>
+                    <a href="settings.html">
+                        <i class="fa fa-cog"></i> Settings
+                    </a>
+                    <a href="help.html">
+                        <i class="fa fa-circle-question"></i> Help Centre
+                    </a>
+                    <a href="contact.html">
+                        <i class="fa fa-envelope"></i> Contact Us
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="page-content">
+            <header>
+                <h1>Disease Trends</h1>
+                <button onclick="window.location.href='index.html'" title="Logout">
+                    <i class="fa fa-power-off"></i> Logout
+                </button>
+            </header>
+
+            <!-- Trends Section -->
+            <div id="trends" class="section">
+                <h2>Disease Trends</h2>
+                <canvas id="diseaseChart" style="width: 400px; height: 200px;"></canvas>
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="common.js"></script>
+    <script>
+        // Load chart for disease trends on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDiseaseTrends();
+        });
+    </script>
+</body>
+</html>

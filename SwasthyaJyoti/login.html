@@ -125,26 +125,26 @@
     const phoneRegex = /^[0-9]{10}$/;
 
     if (!aadhaarRegex.test(aadhaar)) {
-      alert("⚠️ Please enter a valid 12-digit Aadhaar number.");
+      alert(" Please enter a valid 12-digit Aadhaar number.");
       return;
     }
 
     if (!phoneRegex.test(phone)) {
-      alert("⚠️ Please enter a valid 10-digit phone number.");
+      alert(" Please enter a valid 10-digit phone number.");
       return;
     }
     generatedOTP = Math.floor(100000 + Math.random() * 900000);
-    alert("📲 OTP sent to your phone: " + generatedOTP);
+    alert(" OTP sent to your phone: " + generatedOTP);
     document.getElementById("otpSection").style.display = "block";
   }
 
   function verifyOTP() {
     const entered = document.getElementById("otp").value.trim();
     if (entered === generatedOTP.toString()) {
-      alert("✅ OTP Verified! Redirecting to Profile...");
+      alert(" OTP Verified! Redirecting to Profile...");
       window.location.href = "profile.html";
     } else {
-      alert("❌ Incorrect OTP, try again.");
+      alert(" Incorrect OTP, try again.");
     }
   }
 </script>

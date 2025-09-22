@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="sub-style.css" />
+  <link rel="stylesheet" href="sub-style3.css" />
   <style>
     .form-card {
       background: #fff;
@@ -110,7 +111,8 @@
       </div>
 
       <!-- Persons List-->
-      <div class="center-container" id="personsSection" style="display: none;">
+      <main class="dashboard-container"></main>
+        <div class="center-container" id="personsSection" style="display: none;">
         <div class="form-card" style="max-width:700px; width:100%;">
           <h1><i class="fa-solid fa-users"></i> Registered Persons</h1>
           <p class="form-sub">Click on a name to view details & QR code.</p>
@@ -118,8 +120,8 @@
             <!-- Filled dynamically -->
           </div>
         </div>
-      </div>
-
+       </div>
+      </main>
       <!-- Footer -->
       <footer class="site-footer">
         <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
@@ -166,30 +168,104 @@
         .catch(() => {
           // Fallback sample data
           list.innerHTML = `
-            <div class="person-card">
-              <span>Sinchan Ghosh</span>
-              <a href="person-details.html?id=1"><i class="fa fa-eye"></i> View</a>
+            <div class="patient-cards-container">
+            <div class="patient-card">
+                <div class="patient-info">
+                    <h3>Rajesh Kumar</h3>
+                    <p class="id">ID: P001</p>
+                    <p>
+                        <span class="icon">👤</span> 34, Male
+                    </p>
+                    <p>
+                        <span class="icon">📍</span> Maharashtra
+                    </p>
+                    <p>
+                        <span class="icon">📱</span> +91 9876543210
+                    </p>
+                    <p>
+                        <span class="icon">📅</span> 2024-01-15
+                    </p>
+                    <div class="health-status">
+                        <h4>Health Status</h4>
+                        <div class="status-tags">
+                            <span class="tag good">Good</span>
+                            <span class="tag">Hypertension</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="risk-level low">Low Risk</div>
+                <div class="patient-actions">
+                    <button class="action-button"><span class="icon">👁️</span> View</button>
+                    <button class="action-button"><span class="icon">✍️</span> Edit</button>
+                    <button class="action-button"><span class="icon">📄</span></button>
+                </div>
             </div>
-            <div class="person-card">
-              <span>Ditsa Bakshi</span>
-              <a href="person-details.html?id=2"><i class="fa fa-eye"></i> View</a>
+
+            <div class="patient-card">
+                <div class="patient-info">
+                    <h3>Priya Sharma</h3>
+                    <p class="id">ID: P002</p>
+                    <p>
+                        <span class="icon">👤</span> 26, Female
+                    </p>
+                    <p>
+                        <span class="icon">📍</span> Gujarat
+                    </p>
+                    <p>
+                        <span class="icon">📱</span> +91 9876543211
+                    </p>
+                    <p>
+                        <span class="icon">📅</span> 2024-01-12
+                    </p>
+                    <div class="health-status">
+                        <h4>Health Status</h4>
+                        <div class="status-tags">
+                            <span class="tag needs-attention">Needs Attention</span>
+                            <span class="tag">Diabetes</span>
+                            <span class="tag">Respiratory Issues</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="risk-level medium">Medium Risk</div>
+                <div class="patient-actions">
+                    <button class="action-button"><span class="icon">👁️</span> View</button>
+                    <button class="action-button"><span class="icon">✍️</span> Edit</button>
+                    <button class="action-button"><span class="icon">📄</span></button>
+                </div>
             </div>
-            <div class="person-card">
-              <span>Mounasuvra Banerjee</span>
-              <a href="person-details.html?id=3"><i class="fa fa-eye"></i> View</a>
+
+            <div class="patient-card">
+                <div class="patient-info">
+                    <h3>Mohammed Ali</h3>
+                    <p class="id">ID: P003</p>
+                    <p>
+                        <span class="icon">👤</span> 45, Male
+                    </p>
+                    <p>
+                        <span class="icon">📍</span> Kerala
+                    </p>
+                    <p>
+                        <span class="icon">📱</span> +91 9876543212
+                    </p>
+                    <p>
+                        <span class="icon">📅</span> 2024-01-10
+                    </p>
+                    <div class="health-status">
+                        <h4>Health Status</h4>
+                        <div class="status-tags">
+                            <span class="tag critical">Critical</span>
+                            <span class="tag">Heart Disease</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="risk-level high">High Risk</div>
+                <div class="patient-actions">
+                    <button class="action-button"><span class="icon">👁️</span> View</button>
+                    <button class="action-button"><span class="icon">✍️</span> Edit</button>
+                    <button class="action-button"><span class="icon">📄</span></button>
+                </div>
             </div>
-            <div class="person-card">
-              <span>Rishika Roy</span>
-              <a href="person-details.html?id=4"><i class="fa fa-eye"></i> View</a>
-            </div>
-            <div class="person-card">
-              <span>Shreya Mandal</span>
-              <a href="person-details.html?id=1"><i class="fa fa-eye"></i> View</a>
-            </div>
-            <div class="person-card">
-              <span>Chiradipta Behera</span>
-              <a href="person-details.html?id=1"><i class="fa fa-eye"></i> View</a>
-            </div>
+        </div>
           `;
         });
     }

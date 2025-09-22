@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwasthyaJyoti — Login</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="page-layout">
+        <!-- Main Content -->
+        <div class="page-content center-content">
+            <!-- Password Protection -->
+            <div id="authCard" class="center-container">
+                <div class="form-card wide-card">
+                    <h2><i class="fa fa-lock"></i> Officer Access</h2>
+                    <p class="form-sub">Enter the password to unlock the dashboard</p>
+                    <div class="form-group">
+                        <label for="dashboardPass"><i class="fa fa-key"></i> Password</label>
+                        <input type="password" id="dashboardPass" placeholder="Enter Password" required>
+                    </div>
+                    <button class="btn-primary full-btn" onclick="checkDashboardAccess()">Unlock</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        // NOTE: alert() is replaced with a custom message for better UI handling in a real app.
+        function showMessage(message) {
+            const authCard = document.getElementById("authCard");
+            const messageDiv = document.createElement("div");
+            messageDiv.className = "alert-message";
+            messageDiv.innerText = message;
+            authCard.appendChild(messageDiv);
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+
+        function checkDashboardAccess() {
+            const password = document.getElementById("dashboardPass").value;
+            if (password === "ditsa1234") {
+                window.location.href = "dashboard.html"; // Redirect to the main dashboard page
+            } else {
+                showMessage("Incorrect password!");
+            }
+        }
+    </script>
+</body>
+</html>

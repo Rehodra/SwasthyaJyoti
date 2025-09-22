@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      left: 280px; 
+      width: calc(100% - 280px);
+      background: #023047;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    header button {
+      background: #e63946;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    header button:hover {
+      background: #c72c3b;
+    }
+    
+  </style>
+</head>
+<body>
+    <div id="states" class="section" style="display:none;">
+          <h2>State-wise Data</h2>
+          <table id="statesTable">
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Total Migrants Arrived</th>
+                <th>Registered Migrants</th>
+                <th>% of Affected Migrants</th>
+                <th>Widespread Disease</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+</body>
+</html>

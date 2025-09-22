@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwasthyaJyoti — Dashboard</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="brand">
+                    <img src="images/logo.png" alt="logo" />
+                    <h2>SwasthyaJyoti</h2>
+                    <div class="sub">Your Health, Our Mission</div>
+                </div>
+                <nav>
+                    <a href="dashboard.html" class="active">
+                        <i class="fa fa-chart-pie"></i> Dashboard
+                    </a>
+                    <a href="statesData.html">
+                        <i class="fa fa-map"></i> States Data
+                    </a>
+                    <a href="trends.html">
+                        <i class="fa fa-chart-line"></i> Disease Trends
+                    </a>
+                    <a href="reports.html">
+                        <i class="fa fa-file-alt"></i> Reports
+                    </a>
+                    <a href="settings.html">
+                        <i class="fa fa-cog"></i> Settings
+                    </a>
+                    <a href="help.html">
+                        <i class="fa fa-circle-question"></i> Help Centre
+                    </a>
+                    <a href="contact.html">
+                        <i class="fa fa-envelope"></i> Contact Us
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="page-content">
+            <header>
+                <h1>Dashboard</h1>
+                <button onclick="window.location.href='index.html'" title="Logout">
+                    <i class="fa fa-power-off"></i> Logout
+                </button>
+            </header>
+
+            <!-- Dashboard Section -->
+            <<!-- Health Metrics -->
+  <div class="grid grid-4">
+    <div class="card metric">
+      <div>
+        <p>Total Migrant Records</p>
+        <h2>12,847</h2>
+        <span class="trend-up">▲ +12.5%</span>
+      </div>
+      <div class="icon-box bg-primary">👥</div>
+    </div>
+    <div class="card metric">
+      <div>
+        <p>Health Screenings</p>
+        <h2>8,923</h2>
+        <span class="trend-up">▲ +8.2%</span>
+      </div>
+      <div class="icon-box bg-health">❤️</div>
+    </div>
+    <div class="card metric">
+      <div>
+        <p>Disease Cases</p>
+        <h2>247</h2>
+        <span class="trend-down">▼ -5.1%</span>
+      </div>
+      <div class="icon-box bg-warning">⚠️</div>
+    </div>
+    <div class="card metric">
+      <div>
+        <p>Recovery Rate</p>
+        <h2>94.8%</h2>
+        <span class="trend-up">▲ +2.3%</span>
+      </div>
+      <div class="icon-box bg-success">📈</div>
+    </div>
+  </div>
+
+  <!-- State-wise & Disease Alerts -->
+  <div class="grid grid-2" style="margin-top:20px;">
+    <!-- State-wise -->
+    <div class="card">
+      <h3>📍 State-wise Migrant Distribution</h3>
+      <div style="margin-top:15px;">
+        <div class="state-row">
+          <div class="state-info"><div class="state-bar"></div><div><p><b>Maharashtra</b></p><p style="font-size:0.8rem;color:#666">3,247 migrants</p></div></div>
+          <span class="badge medium">Medium Risk</span>
+        </div>
+        <div class="state-row">
+          <div class="state-info"><div class="state-bar"></div><div><p><b>Gujarat</b></p><p style="font-size:0.8rem;color:#666">2,156 migrants</p></div></div>
+          <span class="badge low">Low Risk</span>
+        </div>
+        <div class="state-row">
+          <div class="state-info"><div class="state-bar"></div><div><p><b>Karnataka</b></p><p style="font-size:0.8rem;color:#666">1,893 migrants</p></div></div>
+          <span class="badge high">High Risk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disease Alerts -->
+    <div class="card">
+      <h3>⚡ Disease Alerts</h3>
+      <div style="margin-top:15px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p>Respiratory Infections</p>
+            <span class="badge high">High</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <small>89 cases</small>
+            <div class="progress"><div style="width:89%; background:red;"></div></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p>Skin Conditions</p>
+            <span class="badge medium">Medium</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <small>67 cases</small>
+            <div class="progress"><div style="width:67%; background:orange;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disease Trends Chart -->
+    <div class="card">
+        
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Quick Actions</h3>
+    <div class="grid grid-3 actions" style="margin-top:15px;">
+      <button><div>👥</div><span>Add New Patient</span></button>
+      <button><div>❤️</div><span>Health Screening</span></button>
+      <button><div>📄</div><span>Medical Records</span></button>
+    </div>
+  </div>
+            <!-- Footer -->
+            <footer class="site-footer">
+                <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="common.js"></script>
+    <script>
+        // Load data and charts specific to the dashboard on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboardData();
+        });
+    </script>
+</body>
+</html>

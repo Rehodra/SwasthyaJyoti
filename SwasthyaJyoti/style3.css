@@ -1,0 +1,249 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.dashboard-header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #007bff;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.patient-records {
+    margin-bottom: 20px;
+}
+
+.patient-records h2 {
+    margin: 0 0 5px;
+    font-size: 20px;
+    color: #555;
+}
+
+.patient-records p {
+    margin: 0;
+    color: #888;
+    font-size: 14px;
+}
+
+.add-patient-bar {
+    background-color: #00a08e;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.add-patient-button {
+    background-color: #fff;
+    color: #00a08e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-patient-button:hover {
+    background-color: #f0f0f0;
+}
+
+.patient-list-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-button {
+    background-color: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #e6f2ff;
+}
+
+.filter-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.filter-button.critical {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.filter-button.critical:hover {
+    background-color: #ffe6e9;
+}
+
+.filter-button.needs-attention {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.filter-button.needs-attention:hover {
+    background-color: #fffbe6;
+}
+
+.patient-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+.patient-info {
+    flex: 1;
+}
+
+.patient-info h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #333;
+}
+
+.patient-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.patient-info p .icon {
+    margin-right: 5px;
+    color: #007bff;
+}
+
+.patient-info .id {
+    font-size: 12px;
+    color: #888;
+}
+
+.health-status {
+    margin-top: 15px;
+}
+
+.health-status h4 {
+    margin: 0 0 5px;
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.status-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    background-color: #eee;
+    color: #555;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.tag.good {
+    background-color: #e6f7ea;
+    color: #28a745;
+}
+
+.tag.needs-attention {
+    background-color: #fffbe6;
+    color: #ffc107;
+}
+
+.tag.critical {
+    background-color: #ffe6e9;
+    color: #dc3545;
+}
+
+.risk-level {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.risk-level.low {
+    background-color: #e6f7ea;
+    color: #28a745;
+}
+
+.risk-level.medium {
+    background-color: #fffbe6;
+    color: #ffc107;
+}
+
+.risk-level.high {
+    background-color: #ffe6e9;
+    color: #dc3545;
+}
+
+.patient-actions {
+    display: flex;
+    align-self: flex-end;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.action-button {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    color: #666;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #f0f0f0;
+}
+
+.action-button .icon {
+    font-size: 16px;
+}

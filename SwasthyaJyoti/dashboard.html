@@ -33,6 +33,7 @@
     header button:hover {
       background: #c72c3b;
     }
+    
   </style>
 </head>
 <body>
@@ -50,7 +51,7 @@
           <a href="#" onclick="showSection('dashboard')" class="active">
             <i class="fa fa-chart-pie"></i> Dashboard
           </a>
-          <a href="#" onclick="showSection('states')">
+          <a href="/SwasthyaJyoti/statesData.html">
             <i class="fa fa-map"></i> States Data
           </a>
           <a href="#" onclick="showSection('trends')">
@@ -127,7 +128,7 @@
         <!-- Trends Section -->
         <div id="trends" class="section" style="display:none;">
           <h2>Disease Trends</h2>
-          <canvas id="diseaseChart"></canvas>
+          <canvas id="diseaseChart" style="width: 400px; height: 200px;"></canvas>
         </div>
 
         <!-- Reports Section -->
@@ -264,34 +265,44 @@
         options: { responsive: true, scales: { x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 } } } }
       });
 
-      // Disease Trends Pie Chart
-      const diseaseCounts = {};
-      statesData.forEach(s => {
-        diseaseCounts[s.diseaseName] = (diseaseCounts[s.diseaseName] || 0) + 1;
-      });
+      // Disease Trends Doughnut Chart (Updated)
+            const diseaseCounts = {};
+            statesData.forEach(s => {
+                diseaseCounts[s.diseaseName] = (diseaseCounts[s.diseaseName] || 0) + 1;
+            });
 
-      new Chart(document.getElementById("diseaseChart"), {
-        type: "pie",
-        data: {
-          labels: Object.keys(diseaseCounts),
-          datasets: [{
-            label: "Disease Distribution",
-            data: Object.values(diseaseCounts),
-            backgroundColor: [
-              "#ff6b6b", "#4dabf7", "#51cf66", "#fcc419", "#845ef7",
-              "#ff922b", "#339af0", "#e64980", "#12b886", "#fab005"
-            ]
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            title: { display: true, text: "Widespread Disease Distribution Across States" }
-          }
+            new Chart(document.getElementById("diseaseChart"), {
+                type: "doughnut",
+                data: {
+                    labels: Object.keys(diseaseCounts),
+                    datasets: [{
+                        label: "Disease Distribution",
+                        data: Object.values(diseaseCounts),
+                        backgroundColor: [
+                            "#0D6B63", "#4CAF50", "#2196F3", "#E63946", "#FFC107",
+                            "#9C27B0", "#00BCD4", "#8BC34A", "#FF9800", "#673AB7"
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: "#333"
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: "Widespread Disease Distribution Across States",
+                            color: "#333",
+                            font: { size: 16 }
+                        }
+                    }
+                }
+            });
         }
-      });
-    }
-
     function checkDashboardAccess() {
       const password = document.getElementById("dashboardPass").value;
       if (password === "ditsa1234") {
@@ -299,7 +310,7 @@
         document.getElementById("dashboardContent").style.display = "block";
         loadDashboardData();
       } else {
-        alert("❌ Incorrect password!");
+        alert(" Incorrect password!");
       }
     }
   </script>

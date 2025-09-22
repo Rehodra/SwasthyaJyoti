@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwasthyaJyoti — Help Centre</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="brand">
+                    <img src="images/logo.png" alt="logo" />
+                    <h2>SwasthyaJyoti</h2>
+                    <div class="sub">Your Health, Our Mission</div>
+                </div>
+                <nav>
+                    <a href="dashboard.html">
+                        <i class="fa fa-chart-pie"></i> Dashboard
+                    </a>
+                    <a href="statesData.html">
+                        <i class="fa fa-map"></i> States Data
+                    </a>
+                    <a href="trends.html">
+                        <i class="fa fa-chart-line"></i> Disease Trends
+                    </a>
+                    <a href="reports.html">
+                        <i class="fa fa-file-alt"></i> Reports
+                    </a>
+                    <a href="settings.html">
+                        <i class="fa fa-cog"></i> Settings
+                    </a>
+                    <a href="help.html" class="active">
+                        <i class="fa fa-circle-question"></i> Help Centre
+                    </a>
+                    <a href="contact.html">
+                        <i class="fa fa-envelope"></i> Contact Us
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="page-content">
+            <header>
+                <h1>Help Centre</h1>
+                <button onclick="window.location.href='index.html'" title="Logout">
+                    <i class="fa fa-power-off"></i> Logout
+                </button>
+            </header>
+
+            <!-- Help Section -->
+            <div id="help" class="section">
+                <h2><i class="fa fa-circle-question"></i> Help Centre</h2>
+                <div class="faq-item"><h4><i class="fa fa-user"></i> How do I register?</h4><p>Verify OTP and fill in personal details.</p></div>
+                <div class="faq-item"><h4><i class="fa fa-qrcode"></i> How do I generate a QR?</h4><p>Go to Profile → Generate QR → Download QR.</p></div>
+                <div class="faq-item"><h4><i class="fa fa-chart-line"></i> What is % of affected migrants?</h4><p>Shows estimated spread among new arrivals.</p></div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

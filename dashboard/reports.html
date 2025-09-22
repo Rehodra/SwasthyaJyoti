@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwasthyaJyoti — Reports</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="brand">
+                    <img src="images/logo.png" alt="logo" />
+                    <h2>SwasthyaJyoti</h2>
+                    <div class="sub">Your Health, Our Mission</div>
+                </div>
+                <nav>
+                    <a href="dashboard.html">
+                        <i class="fa fa-chart-pie"></i> Dashboard
+                    </a>
+                    <a href="statesData.html">
+                        <i class="fa fa-map"></i> States Data
+                    </a>
+                    <a href="trends.html">
+                        <i class="fa fa-chart-line"></i> Disease Trends
+                    </a>
+                    <a href="reports.html" class="active">
+                        <i class="fa fa-file-alt"></i> Reports
+                    </a>
+                    <a href="settings.html">
+                        <i class="fa fa-cog"></i> Settings
+                    </a>
+                    <a href="help.html">
+                        <i class="fa fa-circle-question"></i> Help Centre
+                    </a>
+                    <a href="contact.html">
+                        <i class="fa fa-envelope"></i> Contact Us
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-note">&copy; 2025 SwasthyaJyoti</div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="page-content">
+            <header>
+                <h1>Reports</h1>
+                <button onclick="window.location.href='index.html'" title="Logout">
+                    <i class="fa fa-power-off"></i> Logout
+                </button>
+            </header>
+
+            <!-- Reports Section -->
+            <div id="reports" class="section">
+                <h2><i class="fa fa-file-alt"></i> Reports</h2>
+                <p>Download official health reports and analytics.</p>
+                <div class="cards">
+                    <div class="card"><i class="fa fa-file-pdf"></i><h3>Monthly Report</h3><p>Detailed data for this month.</p><button class="btn-primary">Download PDF</button></div>
+                    <div class="card"><i class="fa fa-file-excel"></i><h3>State-wise Data</h3><p>Full dataset in Excel.</p><button class="btn-primary">Download Excel</button></div>
+                    <div class="card"><i class="fa fa-chart-bar"></i><h3>Analytics Report</h3><p>Graphs & statistics.</p><button class="btn-primary">Download Charts</button></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <p>&copy; 2025 SwasthyaJyoti | Connecting Communities with Care</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

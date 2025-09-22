@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Dashboard</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <h1>Healthcare Dashboard</h1>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="patient-records">
+            <h2>Patient Records</h2>
+            <p>Manage migrant health records and medical history</p>
+            <div class="add-patient-bar">
+                <button class="add-patient-button">+ Add New Patient</button>
+            </div>
+        </section>
+
+        <section class="patient-list-controls">
+            <div class="search-bar">
+                <input type="text" placeholder="🔎Search patients by name, ID, or state...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-button active">All Patients</button>
+                <button class="filter-button critical">Critical</button>
+                <button class="filter-button needs-attention">Needs Attention</button>
+            </div>
+        </section>
+        
+        <div class="patient-cards-container">
+            <div class="patient-card">
+                <div class="patient-info">
+                    <h3>Rajesh Kumar</h3>
+                    <p class="id">ID: P001</p>
+                    <p>
+                        <span class="icon">👤</span> 34, Male
+                    </p>
+                    <p>
+                        <span class="icon">📍</span> Maharashtra
+                    </p>
+                    <p>
+                        <span class="icon">📱</span> +91 9876543210
+                    </p>
+                    <p>
+                        <span class="icon">📅</span> 2024-01-15
+                    </p>
+                    <div class="health-status">
+                        <h4>Health Status</h4>
+                        <div class="status-tags">
+                            <span class="tag good">Good</span>
+                            <span class="tag">Hypertension</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="risk-level low">Low Risk</div>
+                <div class="patient-actions">
+                    <button class="action-button"><span class="icon">👁️</span> View</button>
+                    <button class="action-button"><span class="icon">✍️</span> Edit</button>
+                    <button class="action-button"><span class="icon">📄</span></button>
+                </div>
+            </div>
+
+            <div class="patient-card">
+                <div class="patient-info">
+                    <h3>Priya Sharma</h3>
+                    <p class="id">ID: P002</p>
+                    <p>
+                        <span class="icon">👤</span> 26, Female
+                    </p>
+                    <p>
+                        <span class="icon">📍</span> Gujarat
+                    </p>
+                    <p>
+                        <span class="icon">📱</span> +91 9876543211
+                    </p>
+                    <p>
+                        <span class="icon">📅</span> 2024-01-12
+                    </p>
+                    <div class="health-status">
+                        <h4>Health Status</h4>
+                        <div class="status-tags">
+                            <span class="tag needs-attention">Needs Attention</span>
+                            <span class="tag">Diabetes</span>
+                            <span class="tag">Respiratory Issues</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="risk-level medium">Medium Risk</div>
+                <div class="patient-actions">
+                    <button class="action-button"><span class="icon">👁️</span> View</button>
+                    <button class="action-button"><span class="icon">✍️</span> Edit</button>
+                    <button class="action-button"><span class="icon">📄</span></button>
+                </div>
+            </div>
+
+            <div class="patient-card">
+                <div class="patient-info">
+                    <h3>Mohammed Ali</h3>
+                    <p class="id">ID: P003</p>
+                    <p>
+                        <span class="icon">👤</span> 45, Male
+                    </p>
+                    <p>
+                        <span class="icon">📍</span> Kerala
+                    </p>
+                    <p>
+                        <span class="icon">📱</span> +91 9876543212
+                    </p>
+                    <p>
+                        <span class="icon">📅</span> 2024-01-10
+                    </p>
+                    <div class="health-status">
+                        <h4>Health Status</h4>
+                        <div class="status-tags">
+                            <span class="tag critical">Critical</span>
+                            <span class="tag">Heart Disease</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="risk-level high">High Risk</div>
+                <div class="patient-actions">
+                    <button class="action-button"><span class="icon">👁️</span> View</button>
+                    <button class="action-button"><span class="icon">✍️</span> Edit</button>
+                    <button class="action-button"><span class="icon">📄</span></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
